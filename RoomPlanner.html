@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<title>Room planner</title>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<h1>Room planner</h1>
+<p>Your task is to create simple room planner. The task consists of two parts: laboratory and home (12 points each). In all doubtful or untold aspects application should behave like the example app (except possible bugs).
+</p>
+<h2>Lab part</h2>
+<ul>
+	<li><a href="WinformsArch_Lab.exe">Example app</a></li>
+	<li>Main window:
+		<ul>
+			<li>Starts in the center of the screen</li>
+			<li>Minimum window size: 400x300</li>
+			<li>When the window is resized, it behaves like in the example app.</li>
+			<li>Divided into two panels. You can change panels' widths using splitter (vertical line between panels):
+				<ul>
+					<li>Right panel: contains two group boxes: "Add furniture" and "Created furniture"</li>
+					<li>Left panel: contains bitmap. Left panel scales automatically when the main window is resized, but the bitmap should stay in the fixed size.</li>
+				</ul>
+			</li>
+			<li>Menu: with "New blueprint" button.</li>
+		</ul>
+	</li>
+	<li>New blueprint
+		<ul>
+			<li>Creates new bitmap with the size of the left panel (it should take all empty space)</li>
+			<li>Shortcut: F2</li>
+		</ul>
+	</li>
+	<li>Add furniture groupbox
+		<ul>
+			<li>Contains four buttons.</li>
+			<li>Buttons automatically change their position while resizing or moving the splitter.
+			<li>The scrollbar should be visible when needed</li>
+		</ul>
+	</li>
+	<li>Buttons
+		<ul>
+			<li>Buttons size: 75x75px. Each button uses images from project's resources (images cannot be loaded from an external location).</li>
+			<li>Button selection - After clicking the button it changes background color. After clicking the button again, the background color changes back to white. When one button is selected and we click another button, the first one should be deselected and the new one should be selected.</li>
+			<li>Mouse should change icon while hovering the buttons</li>
+		</ul>
+	</li>
+	<li>Created furniture groupbox
+		<ul>
+			<li>Contains a list of created furniture. Each row should contain furniture's name ant it's position on the bitmap.</li>
+		</ul>
+	</li>
+	<li>Adding new furniture
+		<ul>
+			<li>When a button is selected and the user clicks on the bitmap, the selected furniture should be drawn. The clicked point should be the center of the furniture (not it's upper-left corner). After adding new furniture the button is deselected.</li>
+			<li>The list in created furniture groupbox should be updated</li>
+		</ul>
+	</li>
+	
+  <li>Hints:
+    <ul>
+        <li>SplitContainer, TableLayoutPanel, FlowLayoutPanel</li>
+		<li>RowSpan/ColumnSpan Property, Dock Property, Tag property, PictureBox, GroupBox, SplitterDistance</li>
+        <li>MouseDown Event, Graphics methods, PictureBox.Refresh, WindowsStartLocation</li>
+    </ul>
+  </li>
+  <li><i>Note: In all doubtful or untold aspects application should behave like the example app (except possible bugs)</i></li>
+  <ul>
+	<li>Scoring:
+	<ul>
+		<li>"Main window" section: <strong>2 points</strong></li>
+		<li>"New blueprint" section: <strong>2 points</strong></li>
+		<li>"Add furniture groupbox" section: <strong>2 points</strong></li>
+		<li>"Buttons" section: <strong>2 points</strong></li>
+		<li>"Adding new furniture" and "Created furniture groupbox" sections: <strong>4 points</strong></li>
+		<li><i>Note: It is not possible to obtain points for incomplete functionality</i></li>
+	</ul>
+	</li>
+</ul>
+</ul>
+
+
+<h2>Home part</h2>
+<strong>Note: To pass the home part, all the features from the lab part must work.</strong>
+<ul>
+	<li><a href="WinformsArch_Home.exe">Example app</a></li>
+	<li>Bitmap resizing
+		<ul>
+			<li>When the main window of the application is increased, the bitmap should also change it's size</li>
+			<li>When the main window of the application is decreased, the bitmap should preserve it's size and the scroll bars should become visible.</li>
+			<li>The scrollbars should ignore mouse wheel event</li>
+		</ul>
+	</li>
+	<li>Drawing walls
+		<ul>
+			<li>The user can draw wall segments after selecting appropriate button in "Add Elements" groupBox</li>
+			<li>After clicking with left mouse button a new segment is added to the wall. </li>
+			<li>Wall segments should have "smooth" connections - any holes and empty spaces are unacceptable</li>
+			<li>Listbox should display the position of the first point added to wall segment</li>
+			<li>After clicking right mouse button wall creation is stopped. Another way to stop building the wall is deselecting the wall button</li>
+		</ul>
+	</li>
+	<li>Selecting elements
+		<ul>
+			<li>The user can select an element by clicking with left mouse button on it.</li>
+			<li>ListBox's selection should be updated</li>
+			<li>When an element is selected it is drawn with alpha set to 50% (it's semi-transparent)</li>
+		</ul>
+	</li>
+	<li>Moving elements
+		<ul>
+			<li>The user can move an element by clicking on it with left mouse button and moving the cursor (with left mouse button still pressed).</li>
+			<li>ListBox must update furniture's actual position</li>
+			<li>When an element is moving it is also selected</li>
+		</ul>
+	</li>
+	<li>Deleting elements
+		<ul>
+			<li>The user can delete an element by selecting it and clicking Delete on the keyboard</li>
+			<li>ListBox must be updated</li>
+		</ul>
+	</li>
+	<li>Rotating elements
+		<ul>
+			<li>The application must support rotating the elements (furniture and wall segments)</li>
+			<li>Furniture rotates around its centers and wall segments around the first point added to segment)</li>
+			<li>To rotate an element, the user has to select the element, and scroll using mouse wheel.</li>
+		</ul>
+	</li>
+	<li>Open and Save
+		<ul>
+			<li>The application must support saving and loading created blueprints</li>
+			<li>After clicking "Save blueprint" from the menu, the appropriate dialog box opens. It allows to enter a name of the file, but it should force you to save it with the extension (you can define any extension, e.g. *.bp)</li>
+			<li>All necessary information about the blueprint should be saved. After loading a file, the bitmap (and listBox) should look the same as in the moment of saving.</li>
+			<li>After clicking "Open blueprint" from the menu, the appropriate dialog box opens. It should force you to open files only with your defined extension (e.g. *.bp)</li>
+			<li>The user must be informed about the result of open or save operations.</li>
+		</ul>
+	</li>
+	<li>Localization
+		<ul>
+			<li>The application should support two languages (English and any other).</li>
+			<li>The application's default language is English</li>
+			<li>Language can be changed using Menu (File->Language). Each text in the application should be changed to an equivalent in a different language. </br> 
+			<b> Note: </b> this should be done using a localization mechanism - changing the Text / Title property will not be scored </li>
+			<li>After changing the localization all controls should be reloaded correctly </li>
+			<li>The main window should remain in the same position and be the same size </li>
+			<li>Remember about the messages and texts in open/save file dialogs and listbox</li>
+		</ul>
+	</li>
+	
+  <li>Hints:
+    <ul>
+		<li>MouseMove, MouseDown Events</li>
+        <li>Form.Localizable, CultureInfo.CurrentUICulture, ResourceManager</li>
+		<li>OpenFileDialog, SaveFileDialog</li>
+		<li>DrawImage, ImageAttributes, SetColorMatrix, TranslateTransform, RotateTransform </li>
+		<li>GraphicsPath, Matrix.RotateAt, GraphicsPath.IsOutlineVisible</li>
+		<li>HandledMouseEventArgs, BindingList</li>
+    </ul>
+  </li>
+  <li><i>Note: In all doubtful or untold aspects application should behave like the example app (except possible bugs)</i></li>
+  <ul>
+	<li>Scoring:
+	<ul>
+		<li>"Bitmap resizing": <strong>1 point</strong></li>
+		<li>"Drawing walls": <strong>2 points</strong></li>
+		<li>"Selecting elements": <strong>1 point</strong></li>
+		<li>"Moving elements": <strong>1 point</strong></li>
+		<li>"Deleting elements": <strong>1 point</strong></li>
+		<li>"Rotating elements" section: <strong>2 points</strong></li>
+		<li>"Open and Save": <strong>2 points</strong></li>
+		<li>"Localization" section: <strong>2 points</strong></li>		
+		<li><i>Note: It is not possible to obtain points for incomplete functionality</i></li>
+		<li><i>Note: To pass the home part, all the features from the lab part must work.</i></li>
+	</ul>
+	</li>
+</ul>
+</ul>
+
+</body>
+</html>
